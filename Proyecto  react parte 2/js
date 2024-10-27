@@ -1,0 +1,64 @@
+import React from 'react';
+
+const Navbar = ({ total }) => {
+    const token = false;
+
+    return (
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Profile</li>
+                {token ? (
+                    <li>Logout</li>
+                ) : (
+                    <>
+                        <li>Login</li>
+                        <li>Registro</li>
+                    </>
+                )}
+                <li>Total: ${total}</li> {/* Mostrando el total */}
+            </ul>
+        </nav>
+    );
+};
+
+const CardPizza = ({ name, price, ingredients }) => {
+    return (
+        <div className="card">
+            <h3>{name}</h3>
+            <p>Price: ${price}</p>
+            <ul>
+                {ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+const App = () => {
+    const total = 25000;
+
+    return (
+        <div>
+            <Navbar total={total} /> {/* Pasando el total como prop a Navbar */}
+            <CardPizza
+                name="Napolitana"
+                price={5950}
+                ingredients={["mozzarella", "tomates", "jamón", "orégano"]}
+            />
+            <CardPizza
+                name="Española"
+                price={6950}
+                ingredients={["mozzarella", "Gorgonzola", "parmesano", "provolone"]}
+            />
+            <CardPizza
+                name="Peperoni"
+                price={6950}
+                ingredients={["mozzarella", "peperoni", "orégano"]}
+            />
+        </div>
+    );
+};
+
+export default App;

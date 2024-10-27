@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería Mamma Mia!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0; 
+        }
+        .hero {
+            background-image: url('Header.jpg'); 
+            background-size: cover;
+            height: 400px;
+            color: red;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: 50px; 
+        }
+        .menu-button {
+            margin-top: -20px; 
+        }
+        .menu-section {
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #343a40;
+            color: red;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer p {
+            color: red; 
+            font-weight: bold; 
+        }
+        .navbar-header-image {
+            width: 120%; 
+            max-height: 120px; 
+            object-fit: cover; 
+        }
+        .navbar-dark {
+            background-color: #000000; 
+        }
+        .navbar-dark .navbar-brand,
+        .navbar-dark .nav-link {
+            color: red; 
+        }
+        .navbar-text {
+            color: white; 
+            font-weight: bold; 
+        }
+        .total-amount {
+            color: red; 
+            font-weight: bold; 
+        }
+        .message-alert {
+            display: none; 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 1000; 
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            text-align: center; 
+            width: 80%; 
+            background-color: black; 
+            color: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+        }
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 10px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="messageAlert" class="message-alert"></div>
+
+    <header class="bg-light text-center py-2">
+        <img src="Header.jpg" alt="Pizzería Mamma Mia!" class="navbar-header-image">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Pizzería Mamma Mia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal">Register</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Total: <strong class="total-amount">25000</strong>
+                </span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Pizzería Mamma Mia!</h1>
+        <p><h2>¡Tenemos las Mejores Pizzas que podrás encontrar!</h2></p>
+        <a href="#menu" class="btn btn-primary menu-button"> Menú</a>
+    </div>
+
+    <section id="about" class="container text-center">
+        <h2>Acerca de Nosotros</h2>
+        <p>En Pizzería Mamma Mia, nos apasiona ofrecerte las mejores pizzas con ingredientes frescos y recetas tradicionales. ¡Ven y disfruta de una experiencia culinaria única!</p>
+    </section>
+
+    <section id="menu" class="menu-section container">
+        <h2 class="text-center">Nuestras Pizzas</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="01.jpg" class="card-img-top" alt="Pizza Napolitana">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza Napolitana</h5>
+                        <p class="card-text">Mozzarella, Tomate, Jamón, Orégano.</p>
+                        <p class="card-text"><strong>$5950</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="02.jpg" class="card-img-top" alt="Pizza Española">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza Española</h5>
+                        <p class="card-text">Mozzarella, Gorgonzola, Parmesano, Provolone.</p>
+                        <p class="card-text"><strong>$6950</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="03.jpg" class="card-img-top" alt="Pizza Pepperoni">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza Pepperoni</h5>
+                        <p class="card-text">Mozzarella, Pepperoni, Orégano.</p>
+                        <p class="card-text"><strong>$6950</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerEmail">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" required minlength="6">
+                        </div>
+                        <div id="passwordError" class="error-message">Las contraseñas no coinciden o deben tener al menos 6 caracteres.</div>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required minlength="6">
+                        </div>
+                        <div id="loginError" class="error-message">La contraseña debe tener al menos 6 caracteres.</div>
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Pizzería Mamma Mia! Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword || password.length < 6) {
+                passwordError.style.display = 'block';
+            } else {
+                passwordError.style.display = 'none';
+                document.getElementById('messageAlert').innerText = 'Registro exitoso';
+                document.getElementById('messageAlert').style.display = 'block';
+                $('#registerModal').modal('hide');
+            }
+        });
+
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('loginPassword').value;
+            const loginError = document.getElementById('loginError');
+
+            if (password.length < 6) {
+                loginError.style.display = 'block';
+            } else {
+                loginError.style.display = 'none';
+                document.getElementById('messageAlert').innerText = 'Inicio de sesión exitoso';
+                document.getElementById('messageAlert').style.display = 'block';
+                $('#loginModal').modal('hide');
+            }
+        });
+
+        $('#registerModal').on('show.bs.modal', function () {
+            document.getElementById('registerForm').reset();
+            document.getElementById('passwordError').style.display = 'none';
+        });
+
+        $('#loginModal').on('show.bs.modal', function () {
+            document.getElementById('loginForm').reset();
+            document.getElementById('loginError').style.display = 'none';
+        });
+
+        
+        setInterval(function() {
+            const messageAlert = document.getElementById('messageAlert');
+            if (messageAlert.style.display === 'block') {
+                messageAlert.style.display = 'none';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
